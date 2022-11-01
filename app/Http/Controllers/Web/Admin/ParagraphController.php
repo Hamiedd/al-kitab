@@ -53,9 +53,14 @@ class ParagraphController extends Controller
         return to_route('admin.contents.show',$content_id);
     }
 
-    public function show($content_id,$paragraph_id)
+    public function show($content_id,$paragraph_id,Request $request)
     {
-        $paragraph = $this->paragraph->findOneBy(['content_id'=>$content_id,'id'=>$paragraph_id]);
+        $data = $request->validate([
+            'text' => 'required|array',
+        ]);
+
+        $paragraph = $this->paragraph->findOneBy(['content_id'=>$content_id,'id'=>$paragraph_id]); 
+
         return view('admin.contents.paragraphs.show',compact('paragraph'));
     }
 

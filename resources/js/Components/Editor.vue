@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="row editor mb-3" >
         <div class="col-md-12 m-1">
             <h3>Edit Content ({{this.lang}})</h3>
@@ -277,3 +277,4 @@ export default {
 
 
 </style>
+ -->
