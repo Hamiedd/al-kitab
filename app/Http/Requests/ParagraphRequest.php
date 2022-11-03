@@ -25,7 +25,7 @@ class ParagraphRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            //'text' => 'required|array',
+            'text' => 'required|array',
             'start_from' => 'sometimes|nullable|array',
             'end_at' => 'sometimes|nullable|array',
         ];
@@ -34,7 +34,7 @@ class ParagraphRequest extends FormRequest
         {
             $rules['end_at.'.$lang] = 'sometimes|nullable|string|date_format:H:i:s';
             $rules['start_from.'.$lang] = 'sometimes|nullable|string|date_format:H:i:s';
-            //$rules['text.'.$lang] = 'sometimes|nullable|string';
+            $rules['text.'.$lang] = 'sometimes|nullable|string';
         }
 
         return $rules;

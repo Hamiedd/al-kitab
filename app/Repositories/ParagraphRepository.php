@@ -26,8 +26,9 @@ class ParagraphRepository extends BaseRepositories implements \App\Contracts\Par
     public function update($id, array $data)
     {
         $p = $id instanceof $this->model ? $id : $this->findOneById($id);
-
+        
         $p->update($data);
+        
         return $p->refresh();
     }
 

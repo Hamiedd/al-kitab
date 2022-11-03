@@ -1,4 +1,4 @@
-/* require('./bootstrap');
+require('./bootstrap');
 import moshaToast  from 'mosha-vue-toastify'
 import    'mosha-vue-toastify/dist/style.css'
 import { createApp } from 'vue'
@@ -16,4 +16,3 @@ app.component('margins-component', MarginsComponent)
 app.component('margins-content-component', MarginContentComponent)
 
 app.mount('#app')
- */

@@ -12,6 +12,7 @@ class Paragraph extends Model
     use HasFactory,Transatable,GlobalObserversTraits;
 
     protected $fillable = [
+
         'text',
         'start_from',
         'end_at',

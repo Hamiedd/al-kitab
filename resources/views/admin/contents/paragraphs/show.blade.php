@@ -45,7 +45,7 @@
             </div>
             <div class="content-body" id="app">
                 @foreach(getLangs() as $lang => $config)
-                    <editor :redirect-to="'{{route('admin.contents.show',$paragraph->content_id)}}'" :lang="'{{$lang}}'" save-route="{{route('admin.paragraphs.text.update',['content_id' => $paragraph->content_id,'paragraph_id' => $paragraph->id ])}}" :object="{{$paragraph}}"></editor>
+                    <editor :redirect-to="'{{route('admin.contents.show',$paragraph->content_id,)}}'" :lang="'{{$lang}}'" save-route="{{route('admin.paragraphs.text.update',['content_id' => $paragraph->content_id,'paragraph_id' => $paragraph->id ])}}" :object="{{$paragraph}}"></editor>
                 @endforeach
 
             </div>

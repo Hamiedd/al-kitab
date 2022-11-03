@@ -19,14 +19,10 @@ class ContentController extends ApiController
     }
 
     public function index()
+    
     {
           $content = $this->content->setRelations(['paragraphs','margins.margin'])->findByFilter();
-            
-/* 
-          $text = str_replace('<mark class=\"cdx-marker\">', "#shadowStart#", $content['text']);
-          $text = str_replace('</mark>', "#shadowEnd#", $text); 
-          $content=$text; */
-       
+          
          return ContentResource::collection( $content);
     }
 

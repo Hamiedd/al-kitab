@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Admin;
 use App\Contracts\ContentContract;
 use App\Contracts\ParagraphContract;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\data;
 use App\Http\Requests\ParagraphRequest;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,7 @@ class ParagraphController extends Controller
     {
         $this->paragraph = $p;
         $this->content = $content;
+        
     }
 
     public function create($content_id)
@@ -30,6 +32,7 @@ class ParagraphController extends Controller
         $data = $request->validated();
         $content = $this->content->findOneById($content_id);
         $data['content_id'] = $content->id;
+    
         $this->paragraph->new($data);
         session()->flash('success',__('messages.flash.create'));
 
@@ -44,22 +47,28 @@ class ParagraphController extends Controller
 
     public function update($content_id,$paragraph_id,ParagraphRequest $request)
     {
-        $data = $request->validated();
+         $data = $request->validated();
         
-
         $paragraph = $this->paragraph->findOneBy(['content_id'=>$content_id,'id'=>$paragraph_id]);
+
+    
         $this->paragraph->update($paragraph,$data);
-        session()->flash('success',__('messages.flash.update'));
-        return to_route('admin.contents.show',$content_id);
+        session()->flash('success',__('messages.flash.update')); 
+        return to_route('admin.contents.show',$content_id); 
     }
 
-    public function show($content_id,$paragraph_id,Request $request)
+    public function show($content_id,$paragraph_id)
     {
-        $data = $request->validate([
-            'text' => 'required|array',
-        ]);
-
-        $paragraph = $this->paragraph->findOneBy(['content_id'=>$content_id,'id'=>$paragraph_id]); 
+      
+       
+        
+        $paragraph = $this->paragraph->findOneBy(['content_id'=>$content_id,'id'=>$paragraph_id]);
+        
+        $text = str_replace("#shadowStart#", '<mark class=\"cdx-marker\">',$paragraph['text'] );
+        $text = str_replace("#shadowEnd#", '</mark>', $text);
+        
+        $paragraph->text=$text;
+          
 
         return view('admin.contents.paragraphs.show',compact('paragraph'));
     }
@@ -78,7 +87,8 @@ class ParagraphController extends Controller
         
         $this->paragraph->update($paragraph,[
             'text'=>$text
-        ]);
+        ]
+        );
         return response()->json([
             'success' => true,
             'paragraph' => $paragraph,

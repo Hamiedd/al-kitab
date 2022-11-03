@@ -28,6 +28,7 @@ Route::get('test',function (){
 
 
 
+
     $blocks = collect(json_decode($p->text)->blocks ?? [])->whereIn('type',['paragraph','quote','ayat']);
     //dd($blocks);
     $block = $blocks->shuffle()->first();
@@ -36,3 +37,4 @@ Route::get('test',function (){
 
     return $block;
 });
+ 
