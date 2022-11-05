@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-4 col-sm-12" >
-    <label for="">Search</label>
+    <label for="">{{__('messages.static.search')}}</label>
     <div class="input-group input-group-merge">
         <input type="text" class="form-control form-control-merge" id="search"
                name="search" value="{{request('search')}}" placeholder="..."

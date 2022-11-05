@@ -156,16 +156,16 @@
         @if(session()->has('success'))
         Toast.fire({
             icon: 'success',
-            title: '{{__('messages.flash.success')}}',
-            text: '{{session()->get('success')}}'
+            title: '{{__(messages.flash.success)}}',
+            text: '{{session()->get(success)}}'
         })
         @endif
 
         @if(session()->has('error'))
         Toast.fire({
             icon: 'error',
-            title: '{{__('messages.flash.error')}}',
-            text: '{{session()->get('error')}}'
+            title: '{{__(messages.flash.error)}}',
+            text: '{{session()->get(error)}}'
         })
         @endif
 

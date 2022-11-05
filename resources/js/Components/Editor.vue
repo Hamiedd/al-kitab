@@ -1,13 +1,13 @@
 <template>
     <div class="row editor mb-3" >
         <div class="col-md-12 m-1">
-            <h3>Edit Content ({{this.lang}})</h3>
+            <h3> تعديل المحتوى ({{this.lang}})</h3>
             <button :class="{'btn btn-success ':true}" @click="save()">
-                Save
+                حفظ
                 <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </button>
             <button v-if="redirectTo" class="mx-1" :class="{'btn btn-info ':true}" @click="save(true)">
-                Save and redirect
+                حفظ وإعادة التوجيه
                 <span v-if="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
             </button>
         </div>

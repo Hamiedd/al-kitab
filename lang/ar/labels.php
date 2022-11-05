@@ -48,6 +48,7 @@ return [
         'first_name' => 'الاسم',
         'last_name' => 'اللقب',
         'name' => 'الاسم',
+        'app_name' => 'الدعاء',
         'title' => 'العنوان',
         'price' => 'السعر',
         'old_price' => 'السعر قديم',
